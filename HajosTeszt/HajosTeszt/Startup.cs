@@ -29,7 +29,7 @@ namespace HajosTeszt
             app.UseHttpsRedirection();
 
             app.UseDefaultFiles();
-            app.UseStaticFiles(); //A sorrend fontos!
+            app.UseStaticFiles(); 
 
             app.UseRouting();
 
