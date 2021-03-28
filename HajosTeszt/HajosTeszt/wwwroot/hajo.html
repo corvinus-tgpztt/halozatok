@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="hetedik.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <title>Hajós teszt</title>
 
@@ -13,7 +14,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-        }
+            }
 
         html, body {
             height: 100%;
@@ -39,7 +40,7 @@
             padding: 1%;
         }
 
-        #kérdés_szöveg {
+        #kérdés_szöveg {            
             color: white;
             background-color: rgba(0,0,0,0.5);
             font-size: 2em;
@@ -48,8 +49,9 @@
             padding: 1%;
             border: 3px solid indigo;
             border-radius: 10px;
-            cursor: pointer;
             margin: 2%;
+            margin-top:3%;
+            line-height: 2em;
         }
 
         #kép {
@@ -78,10 +80,8 @@
             padding: 10px;
             padding-top: 0px;
             border-radius: 10px;
-            cursor: pointer;
             margin: 10px;
             text-align: center;
-            
         }
 
         .kerdes {
@@ -91,11 +91,11 @@
             padding: 10px;
             border: 3px solid #31708F;
             border-radius: 20px 0;
-            cursor: pointer;
             margin: 1% 0;
         }
+                
 
-            .kerdes:not(.rossz,.jó):hover {
+            .kerdes:not(.rossz,.jó, .megvalaszolt):hover {
                 background-color: #31708F;
                 color: white;
                 padding: 10px;
@@ -122,8 +122,9 @@
             color: darkred;
             border: 3px darkred solid;
         }
+
         .kéz {
-            font-size:3em;
+            font-size: 3em;
         }
     </style>
 
@@ -137,17 +138,17 @@
 
         <div id="középső">
             <div id="válaszok">
-                <div id="válasz1" class="kerdes kattintható ">Válasz 1</div>
-                <div id="válasz2" class="kerdes kattintható jó">Válasz 2</div>
-                <div id="válasz3" class="kerdes kattintható rossz">Válasz 3</div>
+                <div id="válasz1" class="kerdes kattintható" onclick="ertekeles(1)">Válasz 1</div>
+                <div id="válasz2" class="kerdes kattintható" onclick="ertekeles(2)">Válasz 2</div>
+                <div id="válasz3" class="kerdes kattintható" onclick="ertekeles(3)">Válasz 3</div>
             </div>
             <div id="kép">
                 <img id="kép1" src="https://szoft1.comeback.hu/hajo/teszt-0050.jpg" />
             </div>
         </div>
         <div id="vezérlő">
-            <div class="gomb kattintható"><span class="kéz">☚</span><br> Vissza</div>
-            <div class="gomb kattintható"><span class="kéz">☛</span><br>Előre </div>
+            <div id="kovetkezo" class="gomb kattintható" onclick="elore()"><span class="kéz">☚</span><br> Vissza</div>
+            <div id="elozo" class="gomb kattintható" onclick="vissza()"><span class="kéz">☛</span><br>Előre </div>
         </div>
     </div>
 </body>
