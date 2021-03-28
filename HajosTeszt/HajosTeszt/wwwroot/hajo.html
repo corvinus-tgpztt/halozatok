@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <title>Hajós teszt</title>
+
+    <style>
+
+
+        #külső {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0f0726+1,2c187a+14,91247d+86,59164c+99 */
+            background: #0f0726; /* Old browsers */
+            background: -moz-linear-gradient(top, #0f0726 1%, #2c187a 14%, #91247d 86%, #59164c 99%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, #0f0726 1%,#2c187a 14%,#91247d 86%,#59164c 99%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, #0f0726 1%,#2c187a 14%,#91247d 86%,#59164c 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0f0726', endColorstr='#59164c',GradientType=0 ); /* IE6-9 */
+            font-family: 'Raleway', sans-serif;
+        }
+
+        #középső {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #válaszok {
+            flex-grow: 1;
+            flex-shrink: 1;
+            padding: 1%;
+        }
+
+        #kérdés_szöveg {
+            color: white;
+            background-color: rgba(0,0,0,0.5);
+            font-size: 2em;
+            text-align: center;
+            font-weight: bold;
+            padding: 1%;
+            border: 3px solid indigo;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 2%;
+        }
+
+        #kép {
+            overflow: hidden;
+            flex-shrink: 0;
+            padding: 0.5%;
+        }
+
+        #középső {
+            display: flex;
+            flex-direction: row;
+            flex-grow: 1;
+        }
+
+        #vezérlő {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .gomb {
+            background-color: transparent;
+            color: white;
+            font-weight: bold;
+            border: 2px solid grey;
+            padding: 10px;
+            padding-top: 0px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            text-align: center;
+            
+        }
+
+        .kerdes {
+            background-color: rgba(255,255,255,0.95);
+            text-align: center;
+            color: #31708F;
+            padding: 10px;
+            border: 3px solid #31708F;
+            border-radius: 20px 0;
+            cursor: pointer;
+            margin: 1% 0;
+        }
+
+            .kerdes:not(.rossz,.jó):hover {
+                background-color: #31708F;
+                color: white;
+                padding: 10px;
+                border-radius: 20px 0;
+                border: 3px solid #31708F;
+                cursor: pointer;
+                border: 3px solid gold;
+            }
+
+        .kattintható:not(.rossz,.jó):hover {
+            background-color: #31708F;
+            color: white;
+            cursor: pointer;
+        }
+
+        .jó {
+            background-color: lightgreen;
+            color: darkgreen;
+            border: 3px darkgreen solid;
+        }
+
+        .rossz {
+            background-color: lightcoral;
+            color: darkred;
+            border: 3px darkred solid;
+        }
+        .kéz {
+            font-size:3em;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div id="külső">
+        <div id="kérdés_szöveg">
+            Kérdés szövege
+        </div>
+
+        <div id="középső">
+            <div id="válaszok">
+                <div id="válasz1" class="kerdes kattintható ">Válasz 1</div>
+                <div id="válasz2" class="kerdes kattintható jó">Válasz 2</div>
+                <div id="válasz3" class="kerdes kattintható rossz">Válasz 3</div>
+            </div>
+            <div id="kép">
+                <img id="kép1" src="https://szoft1.comeback.hu/hajo/teszt-0050.jpg" />
+            </div>
+        </div>
+        <div id="vezérlő">
+            <div class="gomb kattintható"><span class="kéz">☚</span><br> Vissza</div>
+            <div class="gomb kattintható"><span class="kéz">☛</span><br>Előre </div>
+        </div>
+    </div>
+</body>
+</html>
