@@ -1,10 +1,10 @@
 ﻿var kérdések;
-var sorszam = 0;
+var sorszam = 2;
 var kattinthatoe = true;
 
 
 window.onload= function letöltés(){
-    fetch('/questions.json')
+   /* fetch('/questions.json')
         .then(response => response.json())
         .then(data => letöltésBefejeződött(data)
         );
@@ -14,17 +14,42 @@ window.onload= function letöltés(){
         console.log(d)
         kérdések = d;
         kérdésMegjelenítés(kérdések[0])
-    }
-
+    } */
+    kérdésBetöltés(sorszam)
     
+}
+function kérdésBetöltés(id) {
+            fetch(`/questions/${id}`)
+                .then(response => {
+                    if (!response.ok) {
+                        console.error(`Hibás válasz: ${response.status}`)                        
+                    }
+                    else {
+                        return response.json()
+                    }
+                })
+                .then(data => letöltésBefejeződött(data));                
+}    
+function letöltésBefejeződött(d) {
+    console.log("Sikeres letöltés")
+    console.log(d)
+    kérdések = d;
+    kérdésMegjelenítés(kérdések)
 }
 
 function kérdésMegjelenítés(kérdés) {
-    document.getElementById("kérdés_szöveg").innerHTML = kérdés.questionText;
-    document.getElementById("válasz1").innerHTML = kérdés.answer1;
-    document.getElementById("válasz2").innerHTML = kérdés.answer2;
-    document.getElementById("válasz3").innerHTML = kérdés.answer3;
-
+    console.log(kérdés);
+    document.getElementById("kérdés_szöveg").innerText = kérdés.questionText
+    document.getElementById("válasz1").innerText = kérdés.answer1
+    document.getElementById("válasz2").innerText = kérdés.answer2
+    document.getElementById("válasz3").innerText = kérdés.answer3   
+    if (kérdés.image == "") {
+        document.getElementById("kép1").src = "";
+    }
+    else {
+        document.getElementById("kép1").src = "https://szoft1.comeback.hu/hajo/" + kérdés.image;    
+    }
+         
 }
 
 function visszaallit() {
@@ -42,12 +67,12 @@ function ertekeles(szam) {
         document.getElementById("válasz2").classList = "kerdes megvalaszolt";
         document.getElementById("válasz3").classList = "kerdes megvalaszolt";
 
-        if (szam == kérdések[sorszam].correctAnswer) {
+        if (szam == kérdések.correctAnswer) {
             document.getElementById("válasz" + szam).classList = "kerdes jó";
         }
         else {
             document.getElementById("válasz" + szam).classList = "kerdes rossz";
-            document.getElementById("válasz" + kérdések[sorszam].correctAnswer).classList = "kerdes jó";
+            document.getElementById("válasz" + kérdések.correctAnswer).classList = "kerdes jó";
         }
         kattinthatoe = false;
     }
@@ -57,18 +82,21 @@ function ertekeles(szam) {
 
 
 function elore() {
-    if (sorszam == (kérdések.length - 1)) {
+
+    if (sorszam >= 800) {
         sorszam = 0;
     }
-    else { sorszam++; }
-    kérdésMegjelenítés(kérdések[sorszam]);
+
+    sorszam++;
+    kérdésBetöltés(sorszam);
     visszaallit();
 }
 function vissza() {
-    if (sorszam == 0) {
-        sorszam = kérdések.length - 1;
+    if (sorszam <= 1) {
+        sorszam = 801;
     }
-    else { sorszam--; }
-    kérdésMegjelenítés(kérdések[sorszam]);
+
+    sorszam--; 
+    kérdésBetöltés(sorszam);
     visszaallit();
 }
