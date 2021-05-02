@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <script src="hetedik.js"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <title>Hajós teszt</title>
 
@@ -83,12 +83,23 @@
             margin: 10px;
             text-align: center;
         }
+        #info {
+            background-color: rgba(0,178,41,0.60);
+            color: white;
+            font-weight: bold;
+            border: 2px solid grey;
+            padding: 10px;
+            padding-top: 15px;
+            border-radius: 10px;
+            margin: 10px;
+            text-align: center;
+        }
 
         .kerdes {
             background-color: rgba(255,255,255,0.95);
             text-align: center;
-            color: #31708F;
-            padding: 10px;
+            color: #31708F;            
+            padding: 10px;           
             border: 3px solid #31708F;
             border-radius: 20px 0;
             margin: 1% 0;
@@ -147,9 +158,19 @@
             </div>
         </div>
         <div id="vezérlő">
-            <div id="kovetkezo" class="gomb kattintható" onclick="elore()"><span class="kéz">☚</span><br> Vissza</div>
-            <div id="elozo" class="gomb kattintható" onclick="vissza()"><span class="kéz">☛</span><br>Előre </div>
+            <div id="elozo" class="gomb kattintható" onclick="vissza()"><span class="kéz">☚</span><br>Vissza </div>
+            <div id="reset" class="gomb kattintható" onclick="reset()"><span class="kéz">⟲</span><br>Elejéről </div>
+            <p id="info">
+                <span id="kerdesszam">Kérdés betöltése</span> <br>
+                Helyes válaszok:
+                <br>
+                <span id="kor">0/0</span>
+                <br>
+                <span style="font-size:0.6em">Rossz válasz esetén az eddigi pontok törlődnek!</span>
+            </p>
+            <div id="kovetkezo" class="gomb kattintható" onclick="elore()"><span class="kéz">☛</span><br> Előre</div>
         </div>
     </div>
+    <script src="hetedik.js"></script>
 </body>
 </html>
