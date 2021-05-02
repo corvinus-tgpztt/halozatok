@@ -201,6 +201,7 @@ function reset() {
     }
     nextQuestion = 1;
     init();
+    location.reload();
 
 
 }
